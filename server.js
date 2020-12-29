@@ -13,6 +13,12 @@ const db= mongoose.connection
 //requiring dotenv for configuration//
 require("dotenv").config()
 
+
+//database with product info///
+const Product = require("./models/products.js");
+const productSeed = require("./models/seed.js"); //seed of products
+
+
 //estabing our listening PORT variables//
 const PORT = process.env.PORT || 3005
 
@@ -35,7 +41,6 @@ app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(methodOverride("_method"))
-
 
 //Routes//
 app.get("/", (req, res) => {
