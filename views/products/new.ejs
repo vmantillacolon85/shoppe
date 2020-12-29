@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ("../partials/head") %>
+  </head>
+  <body>
+    <nav>
+      <%- include ("../partials/header") %>
+    </nav>
+    <div class="container">
+
+      <h1>New Product Page</h1>
+
+      <form class="edit" action="/products" method="POST">
+        <label for="name">Name: </label>
+          <input type="text" name="name" value="" required id="name">
+        <label for="description">Description: </label>
+          <textarea name="description" value="" id="description"></textarea>
+        <label for="price">Price: </label>
+          <input type="number" name="price" min="0" step=".01" value="0" id="price">
+        <label for="qty">Quantity: </label>
+          <input type="number" name="qty" pattern="[0-9]*" min="0" value="0" id="qty">
+        <label for="img">Image: </label>
+          <input type="text" name="img" value="" id="img"><br>
+        <input type="submit" name="submit" value="Create New Product" class="edit-button">
+      </form>
+    </div>
+    <%- include ("../partials/footer") %>
+  </body>
+</html>
