@@ -4,6 +4,7 @@ const express = require("express")
 const methodOverride = require("method-override")
 const mongoose = require("mongoose")
 const session = require("express-session")
+const bcrypt = require("bcrypt")
 
 //generating the app with express//
 const app = express()
