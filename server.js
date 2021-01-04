@@ -69,7 +69,7 @@ const sessionsController = require("./controllers/sessions.js")
 app.use("/sessions", sessionsController)
 
 const usersController = require("./controllers/users.js")
-app.use("/users", usersContoller)
+app.use("/users", usersController)
 
 //Routes//
 app.get("/", (req, res) => {
