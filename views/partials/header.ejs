@@ -1,4 +1,22 @@
-<nav>
-  <h1 id="shoppe"><a href="/products">The Shoppe</a></h1>
-  <a href="/products/new" class="new-link">New Shoppe</a>
-</nav>
+<!-- <nav>
+  <!-- <h1 id="shoppe"><a href="/products">The Shoppe</a></h1>
+  <a href="/products/new" class="new-link">New Shoppe</a> -->
+<!-- </nav> -->
+
+
+
+<a href="/products" class="brand-logo left">Products</a>
+<ul class="right">
+  <li><a href="/products/new">Create a new Product</a></li>
+  <% if (currentUser) {%>
+    <li> Welcome, <%= currentUser.username%></li>
+    <li>
+      <form class="" action="/sessions?_method=DELETE" method="post">
+        <input type="submit" value="Log Out" class="btn-small red">
+      </form>
+      </li>
+    <%} else {%>
+      <li><a href="/users/new">Sign Up</a> </li>
+      <li><a href="/sessions/new">Log In</a> </li>
+    <%}%>
+</ul>

@@ -3,6 +3,18 @@ const products = express.Router(); //configuration
 // database with product info///
 const Product = require("../models/products.js");
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+      return next()
+  } else {
+    res.redirect("/sessions/new")
+  }
+}
+
+//products.use(isAuthenticated)
+//this will result in the user not being able to see or do anything on the page without being logged. all of the routes below become "protected routes"--meaning you cannot do anything with the routes without being logeed in, ie. you cannot view/show the product, you cannot create/post a product, you cannot edit or delete a product etc, without being logged. in. //
+
+
 //Seed Route //
 
 products.get("/seed", (req, res) => {
@@ -50,9 +62,9 @@ products.get("/", (req, res) => {
     res.render(
       "products/index.ejs",
       {
-        products: foundProducts
-      }
-    )
+        products: foundProducts,
+        currentUser: req.session.currentUser
+      })
   });
 });
 //you can alsoe use foundProducts instead of allProducts///
@@ -76,9 +88,9 @@ products.get("/:id/edit", (req, res) => {
     res.render(
       "products/edit.ejs",
       {
-        product: foundProduct
-      }
-    )
+        product: foundProduct,
+        currentUser: req.session.currentUser
+      })
   });
 });
 
@@ -91,9 +103,21 @@ products.put("/:id", (req, res) => {
     { new: true },
     (error, updatedProduct) => {
     // res.send(updatedProduct);
-      res.redirect(`/products/${req.params.id}`)
+      res.redirect("/products")
     });
 });
+
+// products.put("/:id", isAuthenticated, (req, res) => {
+//   Product.findByIdAndUpdate(
+//     req.params.id,
+//     req.body,
+//     { new: true },
+//     (error, updatedProduct) => {
+//     // res.send(updatedProduct);
+//       res.redirect(`/products/${req.params.id}`)
+//     });
+// });
+
 
 //Post products///
 
@@ -106,7 +130,10 @@ products.post("/", (req, res) => {
 //New products///
 
 products.get("/new", (req, res) => {
-  res.render("products/new.ejs");
+  res.render(
+    "products/new.ejs",
+    {currentUser: req.session.currentUser}
+  )
 });
 
 
@@ -118,11 +145,14 @@ products.get("/:id", (req, res) => {
     res.render(
       "products/show.ejs",
       {
-        product: foundProduct
+        product: foundProduct,
+        currentUser: req.session.currentUser
       }
     )
   });
 });
+
+
 
 //Delete products//
 
@@ -131,6 +161,14 @@ products.delete("/:id", (req, res) => {
     res.redirect("/products")
   });
 });
+
+//Drop DB Route //
+
+products.get("/dropdatabase/cannotundo/areyoursure/reallysure/okthen", (req, res) => {
+  Product.collection.drop()
+  res.send("You did it! You dropped the database")
+  }
+)
 
 
 module.exports = products;
