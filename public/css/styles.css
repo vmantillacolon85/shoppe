@@ -1,0 +1,39 @@
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: whitesmoke;
+}
+
+.products {
+
+}
+
+.card {
+
+}
+
+h1 {
+
+}
+
+h5 {
+
+}
+
+a {
+
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
+h6 {
+
+}
