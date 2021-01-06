@@ -7,16 +7,19 @@
     <nav>
       <%- include ("../partials/header") %>
     </nav>
-    <div class="container">
-      <h1>Log In</h1>
+    <div class="logincontainer">
+      <h1>Log In</h1><br>
         <form action="/sessions" method="POST">
           <label for="name">User Name:</label>
-          <input type="text" name="username" required/>
+          <input type="text" name="username" required/><br>
           <label for="password">Password:</label>
-          <input type="password" name="password" />
-          <br>
+          <input type="password" name="password" /><br>
           <input type="submit" name="Submit">
         </form>
       </div>
+      <nav class="logincontainer"><br>
+        <a href="/shoppe#top" alt="home">Back To The Home Page</a></nav>
+        <br><br>
+      <%- include ("../partials/footer") %>
   </body>
 </html>

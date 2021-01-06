@@ -1,30 +1,29 @@
 //Dependencies//
-
 const express = require("express")
 const methodOverride = require("method-override")
 const mongoose = require("mongoose")
 const session = require("express-session")
 // const bcrypt = require("bcrypt")
 
-//generating the app with express//
+//Generating the app with express//
 const app = express()
 
-//establishing our db with mongoose//
+//Establishing our db with mongoose//
 const db= mongoose.connection
 
-//requiring dotenv for configuration//
+//Requiring dotenv for configuration//
 require("dotenv").config()
 
 
-//database with product info///
+//Database with product info///
 const Product = require("./models/products.js");
 const productSeed = require("./models/seed.js"); //seed of products
 
 
-//estabing our listening PORT variables//
+//Establishing our listening PORT variables//
 const PORT = process.env.PORT || 3005
 
-//connecting to mongoose//
+//Connecting to mongoose//
 const MONGODB_URI = process.env.MONGODB_URI
 
 
@@ -65,11 +64,11 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 const productsController = require("./controllers/products.js")
 app.use("/products", productsController)
 
-const sessionsController = require("./controllers/sessions.js")
-app.use("/sessions", sessionsController)
+const sessionController = require("./controllers/sessions.js")
+app.use("/sessions", sessionController)
 
-const usersController = require("./controllers/users.js")
-app.use("/users", usersController)
+const userController = require("./controllers/users.js")
+app.use("/users", userController)
 
 //Routes//
 app.get("/", (req, res) => {
