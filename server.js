@@ -21,7 +21,7 @@ const productSeed = require("./models/seed.js"); //seed of products
 
 
 //Establishing our listening PORT variables//
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 //Connecting to mongoose//
 const MONGODB_URI = process.env.MONGODB_URI
@@ -69,6 +69,7 @@ app.use("/sessions", sessionController)
 
 const userController = require("./controllers/users.js")
 app.use("/users", userController)
+
 
 
 //Listener///
