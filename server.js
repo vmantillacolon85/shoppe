@@ -70,12 +70,6 @@ app.use("/sessions", sessionController)
 const userController = require("./controllers/users.js")
 app.use("/users", userController)
 
-//Routes//
-app.get("/", (req, res) => {
-  // res.send("Hello World you know it")
-  res.redirect("/products")
-})
-
 
 
 //Listener///

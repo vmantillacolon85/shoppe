@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ("../partials/head") %>
+    <%- include ("../partials/head.ejs") %>
   </head>
   <body>
     <nav>
-      <%- include ("../partials/header") %>
+      <%- include ("../partials/nav.ejs") %>
     </nav>
     <div class="container">
 
@@ -30,8 +30,11 @@
         <button type="submit" class="delete-button">DELETE</button>
       </form>
     </div>
-    <a href="/products">Back to Products Index Page</a>
-    <%- include ("../partials/footer") %>
+    <nav class="home">
+      <a href="/products#top" alt="top">Back to the Home Page</a>
+    </nav>
+      <br><br>
+    <%- include ("../partials/footer.ejs") %>
     <!-- <%- include ("../partials/footer") %> -->
     <!-- <%- include ("../partials/footer") %> -->
   </body>

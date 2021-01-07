@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ("../partials/head") %>
+    <%- include ("../partials/head.ejs") %>
   </head>
   <body>
     <nav>
-      <%- include ("../partials/header") %>
+      <%- include ("../partials/nav.ejs") %>
     </nav>
     <div class="container">
 
@@ -26,7 +26,11 @@
     </form>
       <h4>Current image:</h4>
       <img src="<%= product.img %>" alt="An image of <%= product.name %>" />
-   </div>
-   <%- include ("../partials/footer") %>
+   </div><br>
+    <nav class="home">
+      <a href="/products#top" alt="home">Back to the Home Page</a>
+    </nav>
+      <br><br>
+   <%- include ("../partials/footer.ejs") %>
   </body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ("../partials/head") %>
+    <%- include ("../partials/head.ejs") %>
   </head>
   <body>
     <nav>
-      <%- include ("../partials/header") %>
+      <%- include ("../partials/nav.ejs") %>
     </nav>
     <div class="logincontainer">
       <h1>Log In</h1><br>
@@ -17,9 +17,10 @@
           <input type="submit" name="Submit">
         </form>
       </div>
-      <nav class="logincontainer"><br>
-        <a href="/shoppe#top" alt="home">Back To The Home Page</a></nav>
+      <nav class="home">
+        <a href="/products#top" alt="home">Back to the Home Page</a>
+      </nav>
         <br><br>
-      <%- include ("../partials/footer") %>
+      <%- include ("../partials/footer.ejs") %>
   </body>
 </html>

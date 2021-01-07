@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ("../partials/head") %>
+    <%- include ("../partials/head.ejs") %>
   </head>
   <body>
     <nav>
-      <%- include ("../partials/header") %>
+      <%- include ("../partials/nav.ejs") %>
     </nav>
     <div class="container">
 
@@ -22,9 +22,13 @@
           <input type="number" name="qty" pattern="[0-9]*" min="0" value="0" id="qty">
         <label for="img">Image: </label>
           <input type="text" name="img" value="" id="img"><br>
-        <input type="submit" name="submit" value="Create New Product" class="edit-button">
+        <input type="submit" name="submit" value="Create New Product" class="new-button">
       </form>
-    </div>
-    <%- include ("../partials/footer") %>
+    </div><br>
+      <nav class="home">
+        <a href="/products#top" alt="top">Back to the Home Page</a>
+      </nav>
+        <br><br>
+    <%- include ("../partials/footer.ejs") %>
   </body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ("../partials/head") %>
+    <%- include ("../partials/head.ejs") %>
   </head>
   <body>
     <nav>
-      <%- include ("../partials/header") %>
+      <%- include ("../partials/nav.ejs") %>
     </nav>
     <div class="container">
       <h1>Sign Up</h1>
@@ -18,5 +18,10 @@
           <input type="submit" name="Submit">
         </form>
       </div>
+      <nav class="home">
+        <a href="/products#top" alt="home">Back to the Home Page</a>
+      </nav>
+        <br><br>
+      <%- include ("../partials/footer.ejs") %>
   </body>
 </html>
