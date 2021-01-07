@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <%- include ("../partials/head.ejs") %>
+    <%- include ("../partials/head") %>
   </head>
   <body>
     <%- include ("../partials/nav.ejs") %>
@@ -9,8 +9,7 @@
     <div class="products">
       <% products.forEach( product => { %>
         <div class="card">
-          <h1>New Product</h1>
-          <h5> <%= product.name %></h5>
+          <h1> <%= product.name %></h1>
           <a href="/products/<%=product.id%>">
             <img src="<%= product.img %>" alt="An image of <%= product.name %>" /></a>
             <h6>Price: $<%=product.price%></h6>

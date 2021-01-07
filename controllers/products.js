@@ -55,25 +55,26 @@ products.get("/seed", (req, res) => {
   )
 })
 
-// Root Route//
+
+// //Routes//
 // products.get("/", (req, res) => {
 //   // res.send("Hello World you know it")
-//   res.redirect("/products")
+//   res.redirect("/")
 // })
 
 //Index products//
 
 products.get("/", (req, res) => {
-  Product.find({}, (error, foundProducts) => {
+  Product.find({}, (error, foundProduct) => {
     res.render(
       "products/index.ejs",
       {
-        products: foundProducts,
+        products: foundProduct,
         currentUser: req.session.currentUser
       })
   });
 });
-//you can alsoe use foundProducts instead of allProducts///
+//you can also use foundProducts instead of allProducts///
 
 //Buy products//
 
@@ -87,20 +88,9 @@ products.put("/:id/buy", (req, res) => {
   });
 });
 
-//Edit products///
 
-products.get("/:id/edit", (req, res) => {
-  Product.findById(req.params.id, (error, foundProduct) => {
-    res.render(
-      "products/edit.ejs",
-      {
-        product: foundProduct,
-        currentUser: req.session.currentUser
-      })
-  });
-});
 
-//Put products//
+//Update products//
 
 products.put("/:id", (req, res) => {
   Product.findByIdAndUpdate(
@@ -125,9 +115,9 @@ products.put("/:id", (req, res) => {
 // });
 
 
-//Post products///
+//Create/Post products///
 
-products.post("/", (req, res) => {
+products.post("/", isAuthenticated, (req, res) => {
   Product.create(req.body, (error, createdProduct) => {
     res.redirect("/products");
   });
@@ -135,19 +125,22 @@ products.post("/", (req, res) => {
 
 //New products///
 
-products.get("/new", (req, res) => {
+products.get("/new", isAuthenticated, (req, res) => {
+  Product.find({}, (error, foundProduct)=> {
   res.render(
     "products/new.ejs",
-    {currentUser: req.session.currentUser}
-  )
+    {
+      product: foundProduct,
+      currentUser: req.session.currentUser
+    })
+  })
 });
 
 
 //Show products///
 
-products.get("/:id", (req, res) => {
+products.get("/:id", isAuthenticated, (req, res) => {
   Product.findById(req.params.id, (error, foundProduct) => {
-    // console.log(foundProduct);
     res.render(
       "products/show.ejs",
       {
@@ -158,7 +151,19 @@ products.get("/:id", (req, res) => {
   });
 });
 
+//Edit products///
 
+products.get("/edit/:id", (req, res) => {
+  Product.findById(req.params.id, (error, foundProduct) => {
+    // console.log(foundProduct);
+    res.render(
+      "products/edit.ejs",
+      {
+        product: foundProduct,
+        currentUser: req.session.currentUser
+      })
+  });
+});
 
 //Delete products//
 
@@ -176,5 +181,4 @@ products.get("/dropdatabase/cannotundo/areyoursure/reallysure/okthen", (req, res
   }
 )
 
-
-module.exports = products;
+module.exports = products

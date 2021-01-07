@@ -7,10 +7,10 @@ const User = require("../models/users.js");
 
 sessions.get("/new", (req, res) => {
   res.render("sessions/login.ejs", { currentUser: req.session.currentUser})
-})
+});
 
 sessions.post("/", (req, res) => {
-  //looiing for the username ///
+  //looking for the username ///
   User.findOne({ username: req.body.username }, (error, foundUser) => {
     if (error) {
       console.log(error);
@@ -20,18 +20,18 @@ sessions.post("/", (req, res) => {
     } else {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser
-        res.redirect("/")
+        res.redirect("/products")
       } else {
         res.send('<a href="/">Password does not match</a>')
       }
     }
   })
-})
+});
 
 
 sessions.delete("/", (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/")
+    res.redirect("/products")
   })
 })
 
