@@ -56,10 +56,10 @@ products.get("/seed", (req, res) => {
 })
 
 // Root Route//
-products.get("/", (req, res) => {
-  // res.send("Hello World you know it")
-  res.redirect("/products")
-})
+// products.get("/", (req, res) => {
+//   // res.send("Hello World you know it")
+//   res.redirect("/products")
+// })
 
 //Index products//
 
