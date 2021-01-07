@@ -1,16 +1,15 @@
 .body {
-  display: flex;
-  flex-direction: column;
+
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
+
   background-color: whitesmoke;
 }
 
 .products {
-
+  display: grid;
+  grid-template-columns: repeat (3, 1Fr)
 }
 
 .card {
